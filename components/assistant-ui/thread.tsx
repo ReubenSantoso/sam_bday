@@ -25,7 +25,7 @@ import { TooltipIconButton } from "@/components/assistant-ui/tooltip-icon-button
 export const Thread: FC = () => {
   return (
     <ThreadPrimitive.Root
-      className="bg-background box-border h-full flex flex-col overflow-hidden"
+      className="bg-background box-border flex h-full flex-col overflow-hidden"
       style={{
         ["--thread-max-width" as string]: "42rem",
       }}
@@ -73,7 +73,9 @@ const ThreadWelcome: FC = () => {
     <ThreadPrimitive.Empty>
       <div className="flex w-full max-w-[var(--thread-max-width)] flex-grow flex-col">
         <div className="flex w-full flex-grow flex-col items-center justify-center">
-          <p className="mt-4 font-medium">How can I help you today?</p>
+          <p className="mt-4 font-medium">
+            Do you have what it takes to crack the password?
+          </p>
         </div>
         <ThreadWelcomeSuggestions />
       </div>
@@ -86,22 +88,22 @@ const ThreadWelcomeSuggestions: FC = () => {
     <div className="mt-3 flex w-full items-stretch justify-center gap-4">
       <ThreadPrimitive.Suggestion
         className="hover:bg-muted/80 flex max-w-sm grow basis-0 flex-col items-center justify-center rounded-lg border p-3 transition-colors ease-in"
-        prompt="What is the weather in Tokyo?"
+        prompt="What is the length of the password?"
         method="replace"
         autoSend
       >
         <span className="line-clamp-2 text-ellipsis text-sm font-semibold">
-          What is the weather in Tokyo?
+          What is the length of the password?
         </span>
       </ThreadPrimitive.Suggestion>
       <ThreadPrimitive.Suggestion
         className="hover:bg-muted/80 flex max-w-sm grow basis-0 flex-col items-center justify-center rounded-lg border p-3 transition-colors ease-in"
-        prompt="What is assistant-ui?"
+        prompt="What is this chatbot for?"
         method="replace"
         autoSend
       >
         <span className="line-clamp-2 text-ellipsis text-sm font-semibold">
-          What is assistant-ui?
+          What is this chatbot for?
         </span>
       </ThreadPrimitive.Suggestion>
     </div>
@@ -220,20 +222,6 @@ const AssistantActionBar: FC = () => {
       autohideFloat="single-branch"
       className="text-muted-foreground flex gap-1 col-start-3 row-start-2 -ml-1 data-[floating]:bg-background data-[floating]:absolute data-[floating]:rounded-md data-[floating]:border data-[floating]:p-1 data-[floating]:shadow-sm"
     >
-      {/* <MessagePrimitive.If speaking={false}>
-        <ActionBarPrimitive.Speak asChild>
-          <TooltipIconButton tooltip="Read aloud">
-            <AudioLinesIcon />
-          </TooltipIconButton>
-        </ActionBarPrimitive.Speak>
-      </MessagePrimitive.If>
-      <MessagePrimitive.If speaking>
-        <ActionBarPrimitive.StopSpeaking asChild>
-          <TooltipIconButton tooltip="Stop">
-            <StopCircleIcon />
-          </TooltipIconButton>
-        </ActionBarPrimitive.StopSpeaking>
-      </MessagePrimitive.If> */}
       <ActionBarPrimitive.Copy asChild>
         <TooltipIconButton tooltip="Copy">
           <MessagePrimitive.If copied>
@@ -260,10 +248,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = ({
   return (
     <BranchPickerPrimitive.Root
       hideWhenSingleBranch
-      className={cn(
-        "text-muted-foreground inline-flex items-center text-xs",
-        className
-      )}
+      className={cn("text-muted-foreground inline-flex items-center text-xs", className)}
       {...rest}
     >
       <BranchPickerPrimitive.Previous asChild>

@@ -2,11 +2,12 @@ import { openai } from "@ai-sdk/openai";
 import { jsonSchema, streamText } from "ai";
 
 export const maxDuration = 30;
-export const maxTokenLimit = 150; // Adjusted for ~50-70 words
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  const maxTokenLimit = 150; // Adjusted for ~50-70 words
+  
   // Add a custom system message for prompt engineering
   const prompt = `
       You are a fun, playful, and generous wizard tasked with guarding a secret password. 

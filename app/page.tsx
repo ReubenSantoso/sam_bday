@@ -4,7 +4,9 @@ import { Thread } from "@/components/assistant-ui/thread";
 import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
 import { AssistantRuntimeProvider } from "@assistant-ui/react";
 import InstructionsPanel from "@/components/assistant-ui/instructionpanel";
-import { Menu } from "lucide-react"; // Icon for toggling menu
+import { Menu } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   const runtime = useChatRuntime({ api: "/api/chat" });
@@ -33,8 +35,10 @@ export default function Home() {
         {/* Chat Area (Flexible) */}
         <div className="flex-1 p-4">
           <Thread />
+          <Analytics />
+          <SpeedInsights />
         </div>
-
+        
       </main>
     </AssistantRuntimeProvider>
   );
